@@ -12,7 +12,8 @@ export const initialStore=()=>{
         title: "Do my homework",
         background: null,
       }
-    ]
+    ],
+    navesFavoritas: []
   }
 }
 
@@ -26,12 +27,14 @@ export default function storeReducer(store, action = {}) {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
-    case 'load_contacts':
+
+    case 'toggle_nave':
 
       return {
         ...store,
-        result: action.payload
+        navesFavoritas: [...store.navesFavoritas, action.payload]
       };
+
     default:
       throw Error('Unknown action.');
   }    
