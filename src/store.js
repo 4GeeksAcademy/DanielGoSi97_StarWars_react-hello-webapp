@@ -30,9 +30,17 @@ export default function storeReducer(store, action = {}) {
 
     case 'toggle_nave':
 
+      let updateNaves = []
+
+      if(store.navesFavoritas.includes(action.payload)){
+        updateNaves = store.navesFavoritas.filter((nave) => nave != action.payload)
+      }else{
+        updateNaves = [...store.navesFavoritas, action.payload]
+      }
+
       return {
         ...store,
-        navesFavoritas: [...store.navesFavoritas, action.payload]
+        navesFavoritas: updateNaves
       };
 
     default:
