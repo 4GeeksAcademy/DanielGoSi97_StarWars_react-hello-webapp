@@ -8,7 +8,7 @@ export const Home = () => {
   const [starships, setStarships] = useState([])
 
 	function getStarships(){
-		fetch('https://www.swapi.tech/api/starships')
+		fetch('https://swapi.dev/api/starships')
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data.results)
@@ -23,13 +23,8 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			
-			{starships.map((nave) => {
-			return (
-				<Card key={nave.uid} uid={nave.uid} name={nave.name} model={nave.model} />					          
-			);
-			})}
+			<h1>Naves API</h1>
+			{starships.map((nave) => <Card key={nave.url} nave={nave}/>)}
 		</div>
 	);
 }; 
