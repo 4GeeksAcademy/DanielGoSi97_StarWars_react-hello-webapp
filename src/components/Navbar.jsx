@@ -23,12 +23,15 @@ export const Navbar = () => {
 						{store.personajesFavoritos.map((personaje, index)=><p key={index}>{personaje}</p>)} */}
 					</button>
 					  <div className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-						{store.navesFavoritas.map((nave, index)=><li>
-							<a className="dropdown-item" key={index}>{nave}</a>
+						{store.navesFavoritas.map((nave, index)=><li key={'nave-${index}'}>
+							<a className="dropdown-item">{nave}</a>
 							</li>)}
-						{store.personajesFavoritos.map((personaje, index)=><li>
-								<a className="dropdown-item" key={index}>{personaje}</a>
-								</li>)}
+						{store.personajesFavoritos.map((personaje, index)=><li key={'personaje-${index}'}>
+								<a className="dropdown-item">{personaje}</a>
+							</li>)}
+						{store.planetasFavoritos.map((planeta, index)=><li key={'planeta-${index}'}>
+								<a className="dropdown-item">{planeta}</a>
+							</li>)}							
 					</div>
 				</div>
 		</nav>

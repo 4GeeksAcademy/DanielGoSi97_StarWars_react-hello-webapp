@@ -14,7 +14,8 @@ export const initialStore=()=>{
       }
     ],
     navesFavoritas: [],
-    personajesFavoritos: []
+    personajesFavoritos: [],
+    planetasFavoritos: []
   }
 }
 
@@ -58,6 +59,22 @@ export default function storeReducer(store, action = {}) {
         ...store,
         personajesFavoritos: updatePersonajes
       };      
+
+    case 'toggle_planetas':
+
+      let updatePlanetas = []
+
+      if(store.planetasFavoritos.includes(action.payload)){
+        updatePlanetas = store.planetasFavoritos.filter((personajes) => personajes != action.payload)
+      }else{
+        updatePlanetas = [...store.planetasFavoritos, action.payload]
+      }
+
+      return {
+        ...store,
+        planetasFavoritos: updatePlanetas
+      };      
+
 
     default:
       throw Error('Unknown action.');
