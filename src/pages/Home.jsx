@@ -19,11 +19,6 @@ export const Home = () => {
 		})
 	}
 
-	useEffect(()=>{
-		getStarships()
-	},[])
-
-
 	function getCharacters(){
 		fetch('https://swapi.dev/api/people')
 		.then((response) => response.json())
@@ -32,10 +27,6 @@ export const Home = () => {
 		})
 	}
 
-	useEffect(()=>{
-		getCharacters()
-	},[])
-	
 	function getPlanets(){
 		fetch('https://swapi.dev/api/planets')
 		.then((response) => response.json())
@@ -48,6 +39,8 @@ export const Home = () => {
 
 	useEffect(()=>{
 		getPlanets()
+		getCharacters()
+		getStarships()
 	},[])	
 
 	return (
