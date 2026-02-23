@@ -13,7 +13,8 @@ export const initialStore=()=>{
         background: null,
       }
     ],
-    navesFavoritas: []
+    navesFavoritas: [],
+    personajesFavoritos: []
   }
 }
 
@@ -42,6 +43,21 @@ export default function storeReducer(store, action = {}) {
         ...store,
         navesFavoritas: updateNaves
       };
+
+    case 'toggle_personajes':
+
+      let updatePersonajes = []
+
+      if(store.personajesFavoritos.includes(action.payload)){
+        updatePersonajes = store.personajesFavoritos.filter((personajes) => personajes != action.payload)
+      }else{
+        updatePersonajes = [...store.personajesFavoritos, action.payload]
+      }
+
+      return {
+        ...store,
+        personajesFavoritos: updatePersonajes
+      };      
 
     default:
       throw Error('Unknown action.');
